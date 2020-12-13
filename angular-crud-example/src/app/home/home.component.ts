@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { CrudService } from '../crud.service'
+import { Router } from '@angular/router';
+
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(public crudService: CrudService) { }
+  constructor(public crudService: CrudService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.crudService.getAll().subscribe((result)=>{
@@ -29,5 +32,10 @@ export class HomeComponent implements OnInit {
     this.crudService.getAll().subscribe((result)=>{
       this.products = result['data'];
     })  
+  }
+
+  logOut() {
+    this.authService.logout();
+    this.router.navigate(['/auth']);
   }
 }
