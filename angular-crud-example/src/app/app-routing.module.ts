@@ -6,7 +6,7 @@ import { UpdateComponent } from './update/update.component';
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', redirectTo: '/auth', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'products/create', component: CreateComponent },
   { path: 'products/update/:productId', component: UpdateComponent },
